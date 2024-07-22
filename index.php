@@ -23,7 +23,7 @@
 <!-- container-fluid provides a full width container, spanning the entire width of the viewport-->
 <div class="container-fluid p-0">
   <!--first child container MAIN NAVBAR-->
-  <nav class="navbar navbar-expand-lg navbar-light bg-black" >
+  <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-black" >
   <div class="container-fluid d-flex p-0">
 
     <a style="margin-left: 100px; padding-top: 15px;" class="navbar-brand nav-div" href="#"><img style="width: 80px;" src="./Assets/images/logo.jpg" alt=""></a>
