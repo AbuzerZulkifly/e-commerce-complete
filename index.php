@@ -7,27 +7,29 @@
   <!--Bootstrap CSS Link-->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
+  <!--Css Link-->
+<link rel="stylesheet" href="./Assets/css/main.css">
+
 <!--Font Awesome link -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-<!--Css Link-->
-<link rel="stylesheet" href="./Assets/css/main.css">
+
 
 <!------------------------------------------------------------------------------------------------------------------------------------->
 </head>
-<body>
+<body style="background-color: rgb(184, 181, 181);">
 
 <!--NavBar-->
 <!-- container-fluid provides a full width container, spanning the entire width of the viewport-->
-<div class="container-fluid p-0  ">
+<div class="container-fluid p-0">
   <!--first child container MAIN NAVBAR-->
-  <nav class="navbar navbar-expand-lg navbar-light bg-black ">
-  <div class="container-fluid d-flex">
+  <nav class="navbar navbar-expand-lg navbar-light bg-black" >
+  <div class="container-fluid d-flex p-0">
 
     <a style="margin-left: 100px; padding-top: 15px;" class="navbar-brand nav-div" href="#"><img style="width: 80px;" src="./Assets/images/logo.jpg" alt=""></a>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+    <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="fa-solid fa-toggler-icon"></span>
     </button>
     
     <div class="collapse navbar-collapse d-flex " id="navbarSupportedContent" style="margin-left:300px">
@@ -82,7 +84,7 @@
 </div>
 
 
-<nav class="navbar navbar-expand-md navbar-dark bg-secondary d-flex justify-content-center">
+<nav class="navbar navbar-expand-md navbar-dark bg-secondary d-flex justify-content-center header-2">
    <ul class="navbar-nav ">
        <li class="nav-item">
         <a class="nav-link active text-dark p-0 pt-2 cursor-normal pe-none" aria-current="page" href="#"> Welcome Guest Click Here To</a>
@@ -95,15 +97,131 @@
 
 
 <!--3rd Container-->
-<div class="row">
-  <div class="col-md-10 p-5">
+<div class="row" style="padding-left:30px; padding-top:30px">
+  <div class="col-md-10">
     <!--Products-->
-    
+    <div class="row gy-4">
+      <div class="col-md-4">
+        <div class="card">
+          <img src="https://m.media-amazon.com/images/I/61NIMuZS2ZL._AC_UY1000_.jpg" class="card-img-top product-img" alt="...">
+          <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <div class="d-flex align-items-center">
+                <div class="btn-group" role="group">
+                  <button type="button" class="btn btn-secondary btn-md btn-cart"><i class="fa-solid fa-minus"></i></button>
+                  <button type="button" class="btn btn-primary btn-md btn-cart"><i class="fa-solid fa-plus"></i></button>
+                </div>
+
+                <div class="ms-2">
+                  <i class="fa fa-cart-shopping fa-2xl"></i>
+                  <sup style="margin-left: 38px; font-size:larger;">1</sup>
+                </div>
+              </div>
+
+              <a href="" class="btn btn-success btn-md mt-3 btn-view" style="padding-left:130px; padding-right:130px; margin-left:10px">View More</a>
+          
+            </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <img src="https://www.superwh.com.au/user/images/11900.jpg?t=2108221753" class="card-img-top product-img" alt="...">
+          <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <div class="d-flex align-items-center">
+                <div class="btn-group" role="group">
+                  <button type="button" class="btn btn-secondary btn-md btn-cart"><i class="fa-solid fa-minus"></i></button>
+                  <button type="button" class="btn btn-primary btn-md btn-cart"><i class="fa-solid fa-plus"></i></button>
+                </div>
+
+                <div class="ms-2">
+                  <i class="fa fa-cart-shopping fa-2xl"></i>
+                  <sup style="margin-left: 38px; font-size:larger;">1</sup>
+                </div>
+              </div>
+
+              <a href="" class="btn btn-success btn-md mt-3 btn-view" style="padding-left:130px; padding-right:130px; margin-left:10px">View More</a>
+          
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <img src="https://static.independent.co.uk/2024/03/19/15/Soujourn-back-pack-indybest.png" class="card-img-top product-img" alt="...">
+          <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <div class="d-flex align-items-center">
+                <div class="btn-group" role="group">
+                  <button type="button" class="btn btn-secondary btn-md btn-cart"><i class="fa-solid fa-minus"></i></button>
+                  <button type="button" class="btn btn-primary btn-md btn-cart"><i class="fa-solid fa-plus"></i></button>
+                </div>
+
+                <div class="ms-2">
+                  <i class="fa fa-cart-shopping fa-2xl"></i>
+                  <sup style="margin-left: 38px; font-size:larger;">1</sup>
+                </div>
+              </div>
+
+              <a href="" class="btn btn-success btn-md mt-3 btn-view" style="padding-left:130px; padding-right:130px; margin-left:10px">View More</a>
+          
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <img src="https://guide-images.cdn.ifixit.com/igi/M3W2GCcpOZ4G6VE2.large" class="card-img-top product-img" alt="...">
+          <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <div class="d-flex align-items-center">
+                <div class="btn-group" role="group">
+                  <button type="button" class="btn btn-secondary btn-md btn-cart"><i class="fa-solid fa-minus"></i></button>
+                  <button type="button" class="btn btn-primary btn-md btn-cart"><i class="fa-solid fa-plus"></i></button>
+                </div>
+
+                <div class="ms-2">
+                  <i class="fa fa-cart-shopping fa-2xl"></i>
+                  <sup style="margin-left: 38px; font-size:larger;">1</sup>
+                </div>
+              </div>
+
+              <a href="" class="btn btn-success btn-md mt-3 btn-view" style="padding-left:130px; padding-right:130px; margin-left:10px">View More</a>
+          
+          </div>
+        </div>
+      </div>
+      
+    </div>
   </div>
 
 
-  <div class="col-md-2">
+  <div class="col-md-2 bg-dark p-0 w-100%">
     <!--sideNav-->
+    <ul class="navbar-nav">
+      <li class="nav-item bg-light">
+        <a href="" class="nav-link text-center">
+        <h5>Categories</h5>
+        </a>
+      </li>
+      <li class="nav-item bg-secondary">
+        <a href="" class="nav-link text-center">
+        Categorie1
+        </a>
+      </li>
+      <li class="nav-item bg-secondary">
+        <a href="" class="nav-link text-center">
+        Categorie2
+        </a>
+      </li>
+      <li class="nav-item bg-secondary">
+        <a href="" class="nav-link text-center">
+        Categorie3
+        </a>
+      </li>
+    </ul>
   </div>
 </div>
 
