@@ -1,0 +1,11 @@
+body{
+  margin: 0;
+  padding: 0;
+
+}
+
+
+.nav-div:hover{
+  transform: scale(1.4);
+  transition: 0.30s;
+}
