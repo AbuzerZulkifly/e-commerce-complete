@@ -12,7 +12,10 @@ body{
 }
 
 .main-container{
-  padding-top: 70px;
+  padding: 5px;
+  padding-top: 135px;
+  padding-left: 30px;
+  padding-right:20px;
 }
 
 
@@ -40,4 +43,8 @@ body{
 .btn-cart:hover,.btn-view:hover {
   transform: scale(1.1);
   transition: 0.30s;
+}
+
+.navlist:hover{
+  background-color: rgb(89, 89, 239);
 }

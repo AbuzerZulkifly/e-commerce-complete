@@ -1,21 +1,20 @@
+<?php
+include "./Includes/connect.php";
+?>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>One Cick</title>
+    <!--Bootstrap CSS Link-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-  <!--Bootstrap CSS Link-->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!--Font Awesome link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <!--Css Link-->
 <link rel="stylesheet" href="./Assets/css/main.css">
-
-<!--Font Awesome link -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-
-
-<!------------------------------------------------------------------------------------------------------------------------------------->
 </head>
 <body style="background-color: rgb(184, 181, 181);">
 
@@ -23,8 +22,8 @@
 <!-- container-fluid provides a full width container, spanning the entire width of the viewport-->
 <div class="container-fluid p-0">
   <!--first child container MAIN NAVBAR-->
-  <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-black header" >
-  <div class="container-fluid d-flex p-0">
+  <nav class="navbar sticky-top navbar-expand-lg navbar-light p-3 bg-black header" >
+  <div class="container-fluid d-flex p-0 ">
 
     <a style="margin-left: 50px; padding-top: 15px;" class="navbar-brand nav-div" href="#"><img style="width: 80px;" src="./Assets/images/logo.jpg" alt=""></a>
 
@@ -84,10 +83,10 @@
  </nav>
 </div>
 
-<div class="main-container ">
+<div class="main-container">
 
 <!--3rd Container-->
-  <div class="row" style="padding-left:35px; padding-right:20px; padding-top:30px">
+  <div class="row">
     <div class="col-md-10" style="padding-right:25px;">
       <!--Products-->
       <div class="row gy-4">
@@ -188,52 +187,62 @@
     </div>
 
 
-    <div class="col-md-2 bg-dark p-0 w-100%">
+    <div class="col-md-2 bg-dark p-0 w-100% " style="height:100%">
       <!--sideNav-->
       <ul class="navbar-nav">
-        <li class="nav-item bg-light">
+        <li class="nav-item bg-success">
           <a href="" class="nav-link text-center">
           <h5>Categories</h5>
           </a>
         </li>
-        <li class="nav-item bg-secondary">
+
+      <?php 
+        
+        $select_cat = "SELECT * FROM `category`";
+        $result_cat = mysqli_query($conn, $select_cat);
+        while($row = mysqli_fetch_assoc($result_cat)){
+          $title = $row['title'];
+          $id = $row['category_id'];
+          echo "<li class='nav-item bg-secondary border-bottom'>
+                    <a href='index.php?category=$id' class='nav-link text-center navlist'>
+                    $title
+                    </a>
+                </li>";
+        } 
+      ?>
+
+      <ul class="navbar-nav">
+        <li class="nav-item bg-success">
           <a href="" class="nav-link text-center">
-          Categorie1
+          <h5>Brands</h5>
           </a>
         </li>
-        <li class="nav-item bg-secondary">
-          <a href="" class="nav-link text-center">
-          Categorie2
-          </a>
-        </li>
-        <li class="nav-item bg-secondary">
-          <a href="" class="nav-link text-center">
-          Categorie3
-          </a>
-        </li>
+      <?php 
+
+        $select_br = "SELECT * FROM `brand`";
+        $result_br = mysqli_query($conn, $select_br);
+        while($row_br = mysqli_fetch_assoc($result_br)){
+          $title = $row_br['title'];
+          $id = $row_br['brand_id'];
+          echo "<li class = 'nav-item bg-secondary border-bottom'>
+                   <a href = 'index.php?brand=$id' class='nav-link navlist text-center'>
+                   $title
+                   </a>
+                </li>";
+        }
+
+      ?>
       </ul>
+
+
     </div>
   </div>
 </div>
 
-     
-
-
-
-
-
-
-
-
-
-
-
-
-<!------------------------------------------------------------------------------------------------------------------------------------->
-<!-- Bootstrap JS link -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+
 </body>
 
 </html>
