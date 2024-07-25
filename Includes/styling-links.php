@@ -10,6 +10,10 @@
 <!--Admin css link -->
 <link rel="stylesheet" href="../Admin/admin-assets/css/main.css">
 
+  <!--Index Css Link-->
+  <link rel="stylesheet" href="./Assets/css/main.css">
+
+
 <!--Main page css link -->
   <!--Css Link-->
 

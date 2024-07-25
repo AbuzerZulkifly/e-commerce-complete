@@ -61,7 +61,8 @@ if(isset($_POST['insert_product'])){
    $pbrand = $_POST['pbrand'];
    $pprice = $_POST['pprice'];
    $pstock = $_POST['pstock'];
-   
+   $pdiscount = $_POST['$pdiscount'];
+   $padiscount = $_POST['adiscount'];
    //product image access
    $pimg1 = $_FILES['pimg1']['name'];
    $pimg2 = $_FILES['pimg2']['name'];
@@ -72,7 +73,7 @@ if(isset($_POST['insert_product'])){
    $temppimg2 = $_FILES['pimg2']['tmp_name'];
    $temppimg3 = $_FILES['pimg3']['tmp_name'];
 
-   if($pname == ''|| $pdescription == ''|| $pkeyword == ''|| $pprice == ''|| $pstock == ''|| $pimg1 == ''|| $pimg2 == '' || $pimg3 == '')
+   if($pname == ''|| $pdescription == ''|| $pkeyword == ''|| $padiscount == ''|| $pstock == ''|| $pimg1 == ''|| $pimg2 == '' || $pimg3 == '' || $pbrand == ''|| $pcategory == '')
    {
      $success = 0;
      $product = 1;
@@ -85,7 +86,7 @@ if(isset($_POST['insert_product'])){
     move_uploaded_file($temppimg2, "./admin-assets/product-images/$pimg2");
     move_uploaded_file($temppimg3, "./admin-assets/product-images/$pimg3");
 
-    $insert_product = "INSERT INTO `product` (pname,pdescription,pkeyword,category_id,brand_id,pimg1,pimg2,pimg3,price,stock,date) VALUES ('$pname','$pdescription','$pkeyword','$pcategory','$pbrand','$pimg1','$pimg2','$pimg3','$pprice','$pstock', NOW())";
+    $insert_product = "INSERT INTO `product` (pname,pdescription,pkeyword,category_id,brand_id,discount,pimg1,pimg2,pimg3,price,stock,date) VALUES ('$pname','$pdescription','$pkeyword','$pcategory','$pbrand','$pdiscount','$pimg1','$pimg2','$pimg3','$padiscount','$pstock', NOW())";
 
     $insert_result = mysqli_query($conn,$insert_product);
     
@@ -104,7 +105,17 @@ if(isset($_POST['insert_product'])){
 }
 ?>
 
+<style>
+            input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
 
+            input[type="number"] {
+                -moz-appearance: textfield;
+            }
+        </style>
 <body>
 <div class="container d-flex p-0"> 
 
@@ -120,7 +131,7 @@ if(isset($_POST['insert_product'])){
 
         <div class="form-outline mb-3" style="width: 715px;">
           <label for="description" class="form-label">Enter Product Description</label>
-          <input type="text" class="form-control" id="description" name="pdescription" placeholder="Enter Product Description" autocomplete="off" required>
+          <input type="text" class="form-control" id="description" name="pdescription" minlength="50" placeholder="Enter Product Description" autocomplete="off" required>
         </div>
 
         <div class="form-outline mb-4" style="width: 715px;">
@@ -146,6 +157,7 @@ if(isset($_POST['insert_product'])){
                  <!-- brand select-->
           <select name="pbrand" id="" class="form-select" required>
             <option value="">Select a Brand</option>
+            <option value="no_brand">No Brand</option>
               <?php 
               $select_br = "SELECT * FROM `brand`";
               $result_br = mysqli_query($conn,$select_br);
@@ -171,17 +183,17 @@ if(isset($_POST['insert_product'])){
         <div class="form-outline d-flex mb-4" style="width: 715px;">
           <div class="me-4">
             <label for="price" class="form-label">Product Price</label>
-            <input type="number" class="form-control" id="price" name="pprice" placeholder="Enter Product Price" autocomplete="off" required>
+            <input type="number" class="form-control" id="price" name="pprice" onkeyup="getValue();" placeholder="Enter Product Price" autocomplete="off" required>
          </div>
          
          <div class="me-4">
           <label for="discount" class="form-label">Discount Price</label>
-          <input type="number" class="form-control" id="discount" name="pdiscount" placeholder="Enter Discount Price" autocomplete="off">
+          <input type="number" class="form-control" id="discount" name="pdiscount" onkeyup="getValue();" placeholder="Enter Discount Price" autocomplete="off">
          </div>
 
         <div class="me-4">
           <label for="afterdis" class="form-label">After Discount</label>
-          <input type="number" class="form-control" id="afterdis" name="adiscount" autocomplete="off" readonly>
+          <input type="number" class="form-control" id="afterdis" name="adiscount" value="" autocomplete="off" readonly>
         </div> 
           
         <div class="w-25">
@@ -191,11 +203,11 @@ if(isset($_POST['insert_product'])){
           
         </div> 
 
-        <div class="form-outline mb-4 w-100 ">
+        <div class="form-outline text-center mb-4 w-100 ">
         <button type="submit" name="insert_product" class="btn btn-primary w-100">Insert Product</button>
          <?php
           if ($product == 1 && $success == 1){
-            echo "Prouduct Successfully Inserted";
+            echo "Product Successfully Inserted";
           }
          ?>
         </div>
@@ -243,5 +255,17 @@ if(isset($_POST['insert_product'])){
 </div>
 </div>
 </body>
+<script>
+  function getValue() {
+   let price = document.getElementById('price').value;
+   let discount =document.getElementById('discount').value;
+   document.getElementById('afterdis').value =price;
+   
+   let afterDiscount = price - discount;
+
+   document.getElementById('afterdis').value =afterDiscount;
+   
+  }
+</script>
 </html>
 
