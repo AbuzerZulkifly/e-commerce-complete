@@ -86,7 +86,9 @@ include "Includes/styling-links.php";
           <!--Products-->
           <div class="row gy-4">
           <?php
-          getProducts();    
+          getProducts();  
+          getBrand();
+          getCategory();  
           ?>  
           </div>
         </div>
