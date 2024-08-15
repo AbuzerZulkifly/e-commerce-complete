@@ -1,6 +1,6 @@
 <?php 
-include "./../Includes/styling-links.php";
 include "./../Includes/connect.php";
+include "./../Includes/styling-links.php";
 ?>
 <html lang="en">
 <head>
@@ -11,7 +11,7 @@ include "./../Includes/connect.php";
 <body>
   
   <div class="container-fluid p-0 m-0 position-fixed">
-    <nav class="navbar navbar-expand-lg navbar-light bg-black ">
+    <nav class="navbar navbar-expand-lg navbar-light bg-black " style="height:100px">
       <div class="container-fluid d-flex p-0">
         <a style="margin-left: 100px; padding-top: 15px;" class="navbar-brand nav-div" href="#"><img style="width: 80px;" src="../Assets/images/logo.jpg" alt=""></a>
         
@@ -42,7 +42,7 @@ include "./../Includes/connect.php";
 
   <!-- 2nd container-->
 
-  <div class="side-navbar">
+  <div class="side-navbar" style="width:180px">
             <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
                 <a href="index.php" class="d-flex align-items-center pb-3 mb-md-5 me-md-auto ms-4 text-white text-decoration-none">
                     <span class="fs-5 d-none d-sm-inline">Menu</span>

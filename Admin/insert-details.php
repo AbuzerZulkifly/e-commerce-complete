@@ -61,7 +61,7 @@ if(isset($_POST['insert_product'])){
    $pbrand = $_POST['pbrand'];
    $pprice = $_POST['pprice'];
    $pstock = $_POST['pstock'];
-   $pdiscount = $_POST['$pdiscount'];
+   $pdiscount = $_POST['pdiscount'];
    $padiscount = $_POST['adiscount'];
    //product image access
    $pimg1 = $_FILES['pimg1']['name'];
@@ -73,12 +73,13 @@ if(isset($_POST['insert_product'])){
    $temppimg2 = $_FILES['pimg2']['tmp_name'];
    $temppimg3 = $_FILES['pimg3']['tmp_name'];
 
-   if($pname == ''|| $pdescription == ''|| $pkeyword == ''|| $padiscount == ''|| $pstock == ''|| $pimg1 == ''|| $pimg2 == '' || $pimg3 == '' || $pbrand == ''|| $pcategory == '')
+   if($pname == ''|| $pdescription == ''|| $pkeyword == ''|| $padiscount == ''|| $pstock == ''|| $pimg1 == ''|| $pimg2 == '' || $pimg3 == '' || $pbrand == ''|| $pcategory == '' || $pdiscount >= $pprice || $padiscount < 0)
    {
      $success = 0;
      $product = 1;
      
    }
+   
    else 
    {
     //Whenever me upload a image first it will be moved to a folder in our system (in admin assets) and then saved to db
@@ -86,7 +87,7 @@ if(isset($_POST['insert_product'])){
     move_uploaded_file($temppimg2, "./admin-assets/product-images/$pimg2");
     move_uploaded_file($temppimg3, "./admin-assets/product-images/$pimg3");
 
-    $insert_product = "INSERT INTO `product` (pname,pdescription,pkeyword,category_id,brand_id,discount,pimg1,pimg2,pimg3,price,stock,date) VALUES ('$pname','$pdescription','$pkeyword','$pcategory','$pbrand','$pdiscount','$pimg1','$pimg2','$pimg3','$padiscount','$pstock', NOW())";
+    $insert_product = "INSERT INTO `product` (pname,pdescription,pkeyword,category_id,brand_id,pimg1,pimg2,pimg3,price,stock,dprice,discount, date) VALUES ('$pname','$pdescription','$pkeyword','$pcategory','$pbrand','$pimg1','$pimg2','$pimg3','$pprice','$pstock','$padiscount','$pdiscount', NOW())";
 
     $insert_result = mysqli_query($conn,$insert_product);
     
@@ -101,8 +102,8 @@ if(isset($_POST['insert_product'])){
     }
 
    }
-   
-}
+  }
+
 ?>
 
 <style>
@@ -131,7 +132,7 @@ if(isset($_POST['insert_product'])){
 
         <div class="form-outline mb-3" style="width: 715px;">
           <label for="description" class="form-label">Enter Product Description</label>
-          <input type="text" class="form-control" id="description" name="pdescription" minlength="50" placeholder="Enter Product Description" autocomplete="off" required>
+          <input type="text" class="form-control" id="description" name="pdescription" minlength="" placeholder="Enter Product Description" autocomplete="off" required>
         </div>
 
         <div class="form-outline mb-4" style="width: 715px;">
@@ -157,7 +158,6 @@ if(isset($_POST['insert_product'])){
                  <!-- brand select-->
           <select name="pbrand" id="" class="form-select" required>
             <option value="">Select a Brand</option>
-            <option value="no_brand">No Brand</option>
               <?php 
               $select_br = "SELECT * FROM `brand`";
               $result_br = mysqli_query($conn,$select_br);
@@ -174,8 +174,8 @@ if(isset($_POST['insert_product'])){
         <div class="form-outline mb-3" style="width: 715px;">
           <label for="form-label">Select Images</label>
           <div class="d-flex mt-2">
-          <div class="me-2"><input type="file" class="form-control" id="img" name="pimg1" required></div>
-          <div class="me-2"><input type="file" class="form-control" id="img" name="pimg2" required></div>
+          <div class="me-2"><input type="file" class="form-control" id="img" name="pimg1"  required></div>
+          <div class="me-2"><input type="file" class="form-control" id="img" name="pimg2" required ></div>
           <div><input type="file" class="form-control" id="img" name="pimg3" required></div>
           </div>
         </div>
@@ -183,31 +183,33 @@ if(isset($_POST['insert_product'])){
         <div class="form-outline d-flex mb-4" style="width: 715px;">
           <div class="me-4">
             <label for="price" class="form-label">Product Price</label>
-            <input type="number" class="form-control" id="price" name="pprice" onkeyup="getValue();" placeholder="Enter Product Price" autocomplete="off" required>
+            <input type="number" class="form-control" id="price" name="pprice" onkeyup="getValue();" min="100" placeholder="Enter Product Price" autocomplete="off" required>
          </div>
          
          <div class="me-4">
           <label for="discount" class="form-label">Discount Price</label>
-          <input type="number" class="form-control" id="discount" name="pdiscount" onkeyup="getValue();" placeholder="Enter Discount Price" autocomplete="off">
+          <input type="number" class="form-control" id="discount" name="pdiscount" onkeyup="getValue();"  placeholder="Enter Discount Price" autocomplete="off">
          </div>
 
         <div class="me-4">
           <label for="afterdis" class="form-label">After Discount</label>
-          <input type="number" class="form-control" id="afterdis" name="adiscount" value="" autocomplete="off" readonly>
+          <input type="number" class="form-control" id="afterdis" name="adiscount" value="" autocomplete="off"  readonly >
         </div> 
           
         <div class="w-25">
           <label for="stock" class="form-label">Stock Amount</label>
           <input type="number" class="form-control" id="keyword" name="pstock" placeholder="Stock Amount" autocomplete="off" required>
         </div> 
-          
-        </div> 
+        </div>
 
         <div class="form-outline text-center mb-4 w-100 ">
-        <button type="submit" name="insert_product" class="btn btn-primary w-100">Insert Product</button>
+        <button type="submit" name="insert_product" id="insertproductbtn" class="btn btn-primary w-100">Insert Product</button>
          <?php
           if ($product == 1 && $success == 1){
             echo "Product Successfully Inserted";
+          }
+          if ($product == 1 && $success == 0){
+            echo "Please Check if your discount price is greater than or equal to the product price ";
           }
          ?>
         </div>
@@ -221,7 +223,7 @@ if(isset($_POST['insert_product'])){
       <form action="" method="post">
         <h4 class="m-4 text-align-center">Category</h4>
         <div class="form-group "> 
-          <input type="text" class="form-control w-100 mt-1 mb-2" id="categorytitle" name="category_title" placeholder="Enter Category">
+          <input type="text" class="form-control w-100 mt-1 mb-2" id="categorytitle" name="category_title" placeholder="Enter Category" required>
         </div>
         <button type="submit" name="insert_category" class="btn btn-primary w-100">Insert Category</button>
       </form>
@@ -239,7 +241,7 @@ if(isset($_POST['insert_product'])){
       <form action="" method="post">
         <h4 class="m-4">Brand</h4>
         <div class="form-group"> 
-          <input type="text" class="form-control w-100 mt-1 mb-2" id="brandtitle" name="brand_title" placeholder="Enter Brand">
+          <input type="text" class="form-control w-100 mt-1 mb-2" id="brandtitle" name="brand_title" placeholder="Enter Brand" required>
         </div>
         <button type="submit" name="insert_brand" class="btn btn-primary w-100">Insert Brand</button>
       </form>
@@ -257,14 +259,24 @@ if(isset($_POST['insert_product'])){
 </body>
 <script>
   function getValue() {
-   let price = document.getElementById('price').value;
-   let discount =document.getElementById('discount').value;
-   document.getElementById('afterdis').value =price;
+  
+   let price = Number( document.getElementById('price').value);
+   let discount = Number (document.getElementById('discount').value);
+   let afterDiscount = document.getElementById('afterdis').value;
+   afterDiscount = price;
    
+  if (discount >= price){
+    document.getElementById('insertproductbtn').disabled = true;
+    document.getElementById('afterdis').value = price;
+    document.getElementById('errormsg').value = "asdass";
+    
+    
+  } 
+  else{
    let afterDiscount = price - discount;
-
+   document.getElementById('insertproductbtn').disabled = false;
    document.getElementById('afterdis').value =afterDiscount;
-   
+  }
   }
 </script>
 </html>
