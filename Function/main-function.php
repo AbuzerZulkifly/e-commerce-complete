@@ -1,6 +1,4 @@
 <?php 
-include "./Includes/connect.php";
-include "./Includes/styling-links.php";
 include "cart-function.php";
 
 
@@ -585,6 +583,8 @@ function getIPAddress() {
            $ip = $_SERVER['REMOTE_ADDR'];  
    }  
    return $ip;  
-}  
+   
+
+  }  
 
 ?>

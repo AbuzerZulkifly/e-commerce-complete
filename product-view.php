@@ -1,6 +1,7 @@
 <?php 
 include "./Includes/mainpage-header.php";
 include "./Includes/styling-links.php";
+include "./Includes/connect.php";
 ?>
 <style>
             input::-webkit-outer-spin-button,

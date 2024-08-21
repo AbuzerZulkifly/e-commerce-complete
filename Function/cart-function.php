@@ -1,8 +1,4 @@
 <?php 
-include "./Includes/connect.php";
-
-
-
 function addtocart() {
   if(isset($_GET['addtocart'])){
    global $conn;
@@ -227,7 +223,7 @@ else {
           <div class='row mb-4 border-bottom border-black'>Total Price:<div class='col text-end'>50000</div></div>
         
         </div>
-        <a href='checkout.php' class='btn btn-primary w-100 mt-2 mb-2'>Place Your Order</a>
+        <a href='users/checkout.php' class='btn btn-primary w-100 mt-2 mb-2'>Place Your Order</a>
         <a href='index.php' class='btn btn-secondary w-100 mt-2 mb-2'>Continue Shopping</a>
         
         

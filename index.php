@@ -1,5 +1,6 @@
 <?php
 include "./Includes/mainpage-header.php";
+include "./Includes/connect.php";
 ?>
 <div class="main-container">
 
