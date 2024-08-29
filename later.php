@@ -209,7 +209,7 @@
 
 
    -->
-<!-- echo "
+<!-- echo '
   <div class='container'>
   <div class='col'>
   <div style='font-weight: bold; font-size:larger' class='row mb-2 border-bottom border-black'>Total Products:<div class='col text-end'>$rows</div>
@@ -219,13 +219,13 @@
           </a>
           <ul class='dropdown-menu w-100' aria-labelledby='dropdownMenuLink'>
           
-";
-          $cartItem = "SELECT * FROM cart LEFT JOIN product ON cart.product_id = product.id WHERE ip_address = '$ip'";
+';
+          $cartItem = 'SELECT * FROM cart LEFT JOIN product ON cart.product_id = product.id WHERE ip_address = '$ip'';
           $cartItem_result = mysqli_query ($conn, $cartItem);
           $rows = mysqli_num_rows($cartItem_result);
           while( $productDetailss = mysqli_fetch_array($cartItem_result)){
             $name = $productDetailss['pname'];
-            echo "
+            echo '
             <div class='d-flex dropdown-item align-items-center p-2'>
 
             <li><a class='p-0 pe-2 dropdown-item text-end' href='#'>$name(3)</a></li> 
@@ -236,11 +236,11 @@
          <i class='fa fa-trash btn p-0' style='color: red;'></i>
        </div> 
        
-       </div>";
+       </div>';
           }
   
   
-         echo "
+         echo '
          
          </ul>  
       </div>
@@ -255,4 +255,25 @@
 <a href='index.php' class='btn btn-secondary w-100'>Continue Shopping</a>
 
   </div>
-  "; 
+  '; 
+
+  <div class='col-12 d-flex align-content-center gap-3 p-2 border-bottom border-dark'>
+            <div >
+             <img src='https://assets.hardwarezone.com/img/2024/01/B-roll-Image_S24-Ultra_HI.jpg' alt=''>
+             </div>
+             <div>
+              <div>
+                 <span class='fw-bold'>Product:</span>  Samsung Galaxy s24 Ultra 256 GB
+              </div>
+              <div>
+                 <span class='fw-bold'>Quantity:</span>  3
+             </div>
+             <div>
+             <span class='fw-bold'>Price Per unit:</span>  RS 250000/=
+             </div>
+             <div>
+             <span class='fw-bold'>Total:</span>  RS 750000/=
+             </div>
+             </div>
+
+           </div>

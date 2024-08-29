@@ -35,18 +35,29 @@ if(isset($_POST['signup'])) {
   $result_userCheck = mysqli_query($conn, $userCheck);
   $checkForUser = mysqli_num_rows($result_userCheck);
 
+  $proimg = 0;
+  if ($image == ''){
+    $proimg = "user_icon.png";
+    echo "$proimg";
+  }
+  else {
+    $proimg = $image;
+    echo "$proimg";
+  }
+
   if($checkForUser > 0) {
     $userExists = 1;
   }
   else {
-    $userExists = 0;
+      $image = 'user_icon.png';
+      $userExists = 0;
     move_uploaded_file($tempimage, "userimg/$image");
     
-    $userSignup = "INSERT INTO user (ip_address,username,email,password,address,mobile_no,user_img) VALUES ('$ip','$name','$email','$password_hash','$address','$mobile_no','$image')";
+    $userSignup = "INSERT INTO user (ip_address,username,email,password,address,mobile_no,user_img) VALUES ('$ip','$name','$email','$password_hash','$address','$mobile_no','$proimg')";
     
     $result_usersignup = mysqli_query($conn, $userSignup);
      
-  }
+}
 
   $userCart = mysqli_query($conn, "SELECT * FROM cart WHERE ip_address = '$ip'");
   $userCartRow = mysqli_num_rows($userCart);
@@ -87,8 +98,9 @@ if(isset($_POST['signup'])) {
           if($userExists) {
             echo "$image";
           }
+    
           ?>
-        
+          
         "  hidden>
         </label> 
       </div>

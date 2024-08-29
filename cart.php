@@ -1,15 +1,7 @@
 <?php
-include "./Includes/styling-links.php";
 include "./Includes/mainpage-header.php";
 include "./Includes/connect.php";
 ?>
-<style>
-    input{
-      width: 70px;
-      height: 30px;
-    }
-</style>
-
 <div class="main-container">
 
 <div class="row p-2 pt-0 ">

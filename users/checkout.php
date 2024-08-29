@@ -1,10 +1,6 @@
 <?php 
-include "../Includes/styling-links.php";
+include "user-header.php";
 
-
-?>
-
-  <?php
   
 if (!isset($_SESSION['username'])){
   include "login.php";

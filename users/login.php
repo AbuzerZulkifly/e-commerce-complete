@@ -2,7 +2,7 @@
 include "../Includes/connect.php";
 include "../Includes/styling-links.php";
 include "../Function/main-function.php";
-
+@session_start();
 $error = 0;
 if(isset($_POST['signin'])){
  
@@ -19,17 +19,17 @@ if(isset($_POST['signin'])){
   $userCartRow = mysqli_num_rows($userCart);
 
   if ($user_row > 0){
-    $session_email = $_SESSION['email'] = $email;
-    $userEmail = $session_email;
+     $_SESSION['username'] = $username;
+    
      if(password_verify ($password, $userData_row['password'])){
-      $useEmail;
+      $_SESSION['username'] = $username;
       if ($user_row == 1 && $userCartRow == 0 ){
-        $useEmail;
+        $_SESSION['username'] = $username;
         echo "<script> window.open('user_profile.php', '_self') </script>";
       }
 
       else {
-        $useEmail;
+        $_SESSION['username'] = $username;
         echo "<script> window.open('payment.php', '_self') </script>";
       }
 

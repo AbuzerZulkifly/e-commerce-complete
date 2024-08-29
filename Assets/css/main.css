@@ -105,9 +105,6 @@ body{
 
 }
 
-.btn-group {
-  display: none;
-}
 
 
 /* Signup */
@@ -140,4 +137,8 @@ body{
   right: 305px;
   display: none;
 
+}
+
+.card-img img{
+  width: 100px;
 }
